@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const auth = require('basic-auth')
 const path = require('path');
 const axios = require('axios');
 const moment = require('moment');
@@ -9,6 +10,21 @@ moment.locale('zh-cn');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+
+// Basic Auth 中间件
+const basicAuthMiddleware = (req, res, next) => {
+    const credentials = auth(req);
+
+    if (!credentials || credentials.name !== process.env.BASIC_USER || credentials.pass !== process.env.BASIC_PASS) {
+        res.setHeader('WWW-Authenticate', 'Basic realm="example"');
+        return res.status(401).send('Access denied');
+    }
+
+    // 认证成功，继续处理请求
+    next();
+};
+app.use(basicAuthMiddleware);
 
 // 解析JSON请求体
 app.use(express.json());

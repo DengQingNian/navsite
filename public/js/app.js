@@ -48,7 +48,7 @@ async function initApp() {
     window.utils.showPageLoader();
     
     // 初始化粒子系统
-    window.utils.initParticles();
+    // window.utils.initParticles();
     
     // 初始化核心模块
     await initCoreModules();
