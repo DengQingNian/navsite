@@ -4,6 +4,11 @@
 
 这是一个基于飞书多维表格开发的导航网站。 **在线演示地址**：[https://testnav-one.vercel.app/](https://testnav-one.vercel.app/)
 
+## Fork改动：
+- 1、支持我来（wolai）表格作为数据源
+- 2、支持basic auth 鉴权
+##
+
 <table>
   <tr>
     <td><img src="./doc/samples/11.png" alt="示例1"></td>
